@@ -1,0 +1,192 @@
+@keyframes back-animation
+{
+0%   {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+12.5%  {background-image: linear-gradient(45deg, azure, transparent), url("../img/back.jpg");}
+25% {background-image: linear-gradient(90deg, azure, transparent), url("../img/back.jpg");}
+37.5%  {background-image: linear-gradient(135deg, azure, transparent), url("../img/back.jpg");}
+50% {background-image: linear-gradient(180deg, azure, transparent), url("../img/back.jpg");}
+62.5% {background-image: linear-gradient(225deg, azure, transparent), url("../img/back.jpg");}
+75% {background-image: linear-gradient(270deg, azure, transparent), url("../img/back.jpg");}
+87.5% {background-image: linear-gradient(315deg, azure, transparent), url("../img/back.jpg");}
+100% {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+}
+
+@-moz-keyframes back-animation
+{
+0%   {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+12.5%  {background-image: linear-gradient(45deg, azure, transparent), url("../img/back.jpg");}
+25% {background-image: linear-gradient(90deg, azure, transparent), url("../img/back.jpg");}
+37.5%  {background-image: linear-gradient(135deg, azure, transparent), url("../img/back.jpg");}
+50% {background-image: linear-gradient(180deg, azure, transparent), url("../img/back.jpg");}
+62.5% {background-image: linear-gradient(225deg, azure, transparent), url("../img/back.jpg");}
+75% {background-image: linear-gradient(270deg, azure, transparent), url("../img/back.jpg");}
+87.5% {background-image: linear-gradient(315deg, azure, transparent), url("../img/back.jpg");}
+100% {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+}
+
+@-webkit-keyframes back-animation
+{
+0%   {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+12.5%  {background-image: linear-gradient(45deg, azure, transparent), url("../img/back.jpg");}
+25% {background-image: linear-gradient(90deg, azure, transparent), url("../img/back.jpg");}
+37.5%  {background-image: linear-gradient(135deg, azure, transparent), url("../img/back.jpg");}
+50% {background-image: linear-gradient(180deg, azure, transparent), url("../img/back.jpg");}
+62.5% {background-image: linear-gradient(225deg, azure, transparent), url("../img/back.jpg");}
+75% {background-image: linear-gradient(270deg, azure, transparent), url("../img/back.jpg");}
+87.5% {background-image: linear-gradient(315deg, azure, transparent), url("../img/back.jpg");}
+100% {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+}
+
+@-o-keyframes back-animation
+{
+0%   {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+12.5%  {background-image: linear-gradient(45deg, azure, transparent), url("../img/back.jpg");}
+25% {background-image: linear-gradient(90deg, azure, transparent), url("../img/back.jpg");}
+37.5%  {background-image: linear-gradient(135deg, azure, transparent), url("../img/back.jpg");}
+50% {background-image: linear-gradient(180deg, azure, transparent), url("../img/back.jpg");}
+62.5% {background-image: linear-gradient(225deg, azure, transparent), url("../img/back.jpg");}
+75% {background-image: linear-gradient(270deg, azure, transparent), url("../img/back.jpg");}
+87.5% {background-image: linear-gradient(315deg, azure, transparent), url("../img/back.jpg");}
+100% {background-image: linear-gradient(0deg, azure, transparent), url("../img/back.jpg");}
+}
+
+.container-fluid
+{
+    height: 100vh;
+    background-color: azure;
+    background-image: linear-gradient(to left, azure, transparent), url("../img/back.jpg");
+    background-repeat:no-repeat; 
+    background-attachment:fixed;
+    background-size: cover;
+}
+
+#chat-box
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 55%;
+    height: 55%;
+    width: 66%;
+}
+
+#message-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 1em;
+    border: 1px ridge rgba(128, 128, 128, 0.1);
+    box-shadow:  0.25em 0.25em 0.4em gray;
+    border-radius: 0.5em;
+    background-color: rgba(240, 255, 255, 0.7);
+}
+
+#message-container::-webkit-scrollbar
+{
+    display: none;
+}
+
+.message-content
+{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.3em;
+    max-width: 80%;
+    box-shadow:  0.25em 0.25em 0.4em gray;
+    border: 1px ridge rgba(128, 128, 128, 0.1);
+    border-radius: 0.5em;
+    border-right: 0px solid;
+}
+
+.message-box
+{
+    margin: 1em;
+}
+
+.message-text
+{
+    min-height: 2em;
+    overflow-x: auto;
+}
+
+.message-box.self
+{
+    margin-right: 1em;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.message-box.self > .message-content > .message-sender
+{
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 0.75em;
+    color: gray;
+}
+
+.message-box.self > .message-content > .message-time
+{
+    margin-right: auto;
+    margin-left: 0;
+    font-size: 0.2em;
+    color: gray;
+}
+
+.message-box.others
+{
+    margin-right: auto;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+.message-box.others > .message-content > .message-sender
+{
+    margin-right: auto;
+    margin-left: 0;
+    font-size: 0.75em;
+    color: gray;
+}
+
+.message-box.others > .message-content > .message-time
+{
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 0.2em;
+    color: gray;
+}
+
+.message-avatar
+{
+    margin: 0.25em;
+}
+
+#input-group
+{
+    box-shadow:  0.25em 0.25em 0.4em gray;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0.5em;
+    border: 0px;
+    width: 66%;
+}
+
+#input-group > input
+{
+    border: 1px ridge rgba(128, 128, 128, 0.1);
+    width: 80%;
+}
+
+#input-group > button
+{
+    border: 1px ridge rgba(128, 128, 128, 0.1);
+    width: 20%;
+}

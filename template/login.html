@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='zh'>
+<head>
+    <meta charset='UTF-8'>
+    <title>NoneChat 登录</title>
+    <link rel='stylesheet' href='https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js'></script>
+    <script src='https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script> 
+    <script src='https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/popover.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container-fluid full-height-container">
+        <div id="site-name"><p>🅽🅾🅽🅴🅲🅷🅰🆃</p></div>
+        <form class="col-md-4 add-padding" action="{% url '用户登录' %}", method="POST">
+            {% csrf_token %}
+            <input type="text" class="form-control" name="username" placeholder="用户名 {{username_rule}} " value="{{old_username}}" />
+            <input type="password" class="form-control" name="password" placeholder="密码 {{password_rule}} " />
+            <button class="btn btn-block btn-secondary" type="submit" class="btn btn-primary">进入</button>
+            <div class="error">{{ error_msg|default:"<span style='color:black' >NoneChat 匿名聊天室</span>"|safe }}</div>
+        </form>
+        <i id="help" class="fas fa-question-circle fas-2x" title="一些提示" data-html="true" data-toggle="popover" data-placement="bottom" data-content="1.未注册账户会在登录时自动注册。<br/>2.你将一直保有你的账户密码。<br/>3.聊天所用身份会在每次登录时随机生成。"></i>
+    </div>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+    </script>
+</body>
+</html>

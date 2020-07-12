@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='zh'>
+<head>
+    <meta charset='UTF-8'>
+    <title>NoneChat</title>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link rel='stylesheet' href='https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js'></script>
+    <script src='https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/index.js' %}">
+        var socket;
+    </script>
+</head>
+<body>
+    <div class="container-fluid full-height-container">
+        <div id="success-info" class="alert alert-success alert-dismissible fade show" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>成功连接至服务器!</strong>
+        </div>
+        {{hello}}
+        <form action="{% url '用户登出' %}" method="POST">
+            {% csrf_token %}
+            <button id="logout-button" class="btn btn-secondary" type="submit"><i class="fas fa-sign-out-alt"></i>登出</button>
+        </form>
+
+        <div id="chat-box">
+            <div id="message-container">
+            </div>
+            <div id="input-group" class="row">
+                <input type="text" id="message" placeholder="Hello, World!"/><button class="btn btn-secondary" type="submit" id="send_message"><i class="fas fa-location-arrow"></i>发送</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            socket = new WebSocket("ws://" + location.host + "{% url '发送消息' %}");
+            //socket = new WebSocket("ws://" + location.host + "/ws/send/");
+            socket.onopen = function () {
+                console.log('WebSocket open');//成功连接上Websocket
+                $("#success-info").show();
+            };
+            socket.onmessage = function (e) {
+                appendMsg('#message-container', e.data, '{{rand_name}}')
+            };
+            socket.onclose = function(e)
+            {
+                socket = new WebSocket("ws://" + location.host + "{% url '发送消息' %}");
+            };
+            // socket = $.websocket("ws://" + location.host + "{% url '发送消息' %}", {
+            //     events: {
+            //             message: function (e) {
+            //                 appendMsg('#message-container', e.data, '{{rand_name}}')
+            //             },
+            //             open: function () {
+            //                 console.log('WebSocket open');//成功连接上Websocket
+            //                 $("#success-info").show();
+            //             },
+            //             close: function(e) {
+            //                 console.log('WebSocket close');//成功关闭
+            //             }
+            //     }
+            // });
+            $('#send_message').off("click").on("click", function(){
+                console.log("点击");
+                socket.send($('#message').val());//发送数据到服务端
+                $('#message').val('')
+            });
+            $('#message').off('keydown').on('keydown',function(event){
+	            if(event.keyCode == "13")    
+	            {
+                    $('#send_message').click();
+	            }
+       	   });
+            window.onbeforeunload = function()
+            {
+                socket.onclose = null;
+                socket.close();
+            };
+        });
+    </script>
+</body>
+</html>

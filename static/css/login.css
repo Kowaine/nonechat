@@ -1,0 +1,52 @@
+.add-margin
+{
+    margin: 1em auto;
+}
+
+.add-padding
+{
+    padding: 1em;
+}
+
+form
+{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px ridge rgba(128, 128, 128, 0.1);
+    border-radius: 1em;
+    box-shadow:  1em 1em 1.2em gray;
+}
+
+.btn-block
+{
+    width: 75%;
+}
+
+.form-control
+{
+    width: 75%;
+}
+
+
+body
+{
+    height: 100vh;
+}
+
+.error
+{
+    color: brown;
+}
+
+#site-name
+{
+    font-size: 5em;
+}
+
+#help
+{
+    margin: 2em;
+}

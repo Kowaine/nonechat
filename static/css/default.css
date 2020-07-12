@@ -1,0 +1,15 @@
+/* 该文件请在所有自定义css前引入 */
+
+body
+{
+    background-color: azure;
+}
+
+.full-height-container
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
